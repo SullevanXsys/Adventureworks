@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: Adventurework
+    schema: Adventurework_EL
+    description: This is the Adventurework erp postgres database replica
+    tables:
+      - name: person_person_country_region
+        description: Tabela de região das pessoas
+        columns:
+          - name: countryregioncode
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Nome da região
+          - name: modifieddate
+            description: Data da modificação

@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: Adventurework
+    schema: Adventurework_EL
+    description: This is the Adventurework erp postgres database replica
+    tables:
+      - name: sales_order_header
+        description: Tabela de Pedidos
+        columns:
+          - name: salesorderid
+            description: Primary key
+            tests:
+              - unique
+              - not_null
+          - name: salesorderdetailid
+            description: Id dos detalhes do Pedido
+          - name: carriertrackingnumber
+            description: Código de rastreio
+          - name: orderqty
+            description: Quantidade do pedido
+          - name: productid
+            description: Id do produto
+          - name: specialofferid
+            description: Id da oferta especial
+          - name: unitprice
+            description: Preço unitário
+          - name: unitpricediscount
+            description: Desconto de preço unitário
+          - name: rowguid
+            description: Id da linha
+            tests:
+              - unique
+              - not_null
+          - name: modifieddate
+            description: Data da última modificação
