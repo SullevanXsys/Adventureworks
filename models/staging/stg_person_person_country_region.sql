@@ -1,10 +1,10 @@
-WITH stg_person_country_region AS (
-    SELECT countryregioncode
-        ,persontype
-        ,'name'
+with source_sales_credit_card as 
+(
+    select countryregioncode
+        ,'name' as credit_card_name
         ,modifieddate
-    FROM {{ SOURCE('Adventureworks_EL', 'person_person_country_region') }}
+    from Adventureworks_EL.person_person_country_region
 )
 
 select *
-from stg_person_country_region
+from source_sales_credit_card

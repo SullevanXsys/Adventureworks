@@ -1,0 +1,201 @@
+version: 2
+
+sources:
+- name: Adventureworks
+  schema: Adventureworks_EL
+  description: Projeto final de DW e PowerBI da Indicium utilizando o DataBase Adventure Works
+  tables:
+  - name: person_address
+    description: Tabela de endereco das pessoas
+    columns:
+    - name: addressid
+      description: Primary key
+      tests:
+      - unique
+      - not_null
+    - name: addressline1
+      description: Endereco principal
+    - name: addressline2
+      description: Endereco secundario
+    - name: city
+      description: Cidade
+    - name: stateprovinceid
+      description: Id da Unidade Federativa
+    - name: postalcode
+      description: Cep
+    - name: spatiallocation
+      description: Localizacao geografica
+    - name: rowguid
+      description: Id da linha
+      tests:
+      - unique
+      - not_null
+    - name: modifieddate
+      description: Data da última modificacao
+  - name: person_person_country_region
+    description: Tabela de região das pessoas
+    columns:
+    - name: countryregioncode
+      description: Primary key
+      tests:
+      - unique
+      - not_null
+    - name: name
+      description: Nome da região
+    - name: modifieddate
+      description: Data da modificação
+  - name: person_person
+    description: Tabela de Pessoas
+    columns:
+    - name: businessentityid
+      description: Primary key
+      tests:
+      - unique
+      - not_null
+    - name: persontype
+      description: Sigla referente ao cargo da pessoa
+    - name: namestyle
+      description: Forma de armazenamento do nome (0 ocidental, 1 oriental)
+    - name: title
+      description: Título do do nome, por exemplo Mr. ou Ms.
+    - name: firstname
+      description: Primeiro Nome
+    - name: middlename
+      description: Nome do meio
+    - name: lastname
+      description: Sobrenome
+    - name: suffix
+      description: Sufixo do nome, por exemplo Sr. ou Jr.
+    - name: emailpromotion
+      description: Email promocional
+    - name: additionalcontactinfo
+      description: Informação adicional do contato
+    - name: demographics
+      description: Informações adicionais, tais como hobbie e renda.
+    - name: rowguid
+      description: Id da linha
+      tests:
+      - unique
+      - not_null
+    - name: modifieddate
+      description: Data da última modificação
+  - name: sales_credit_card
+    description: Tabela de Cartao de Crédito
+    columns:
+    - name: creditcardid
+      description: Primary key
+      tests:
+      - unique
+      - not_null
+    - name: cardtype
+      description: Tipo de cartao
+    - name: cardnumber
+      description: Numero do cartao
+    - name: expmonth
+      description: Mes de expiracao
+    - name: expyear
+      description: Ano de expiracao
+    - name: modifieddate
+      description: Data da ultima modificacao
+  - name: sales_order_detail
+    description: Tabela de Detalhes do Pedido
+    columns:
+    - name: salesorderid
+      description: Primary key
+      tests:
+      - unique
+      - not_null
+    - name: salesorderdetailid
+      description: Id dos detalhes do Pedido
+    - name: carriertrackingnumber
+      description: Código de rastreio
+    - name: orderqty
+      description: Quantidade do pedido
+    - name: productid
+      description: Id do produto
+    - name: specialofferid
+      description: Id da oferta especial
+    - name: unitprice
+      description: Preço unitário
+    - name: unitpricediscount
+      description: Desconto de preço unitário
+    - name: rowguid
+      description: Id da linha
+      tests:
+      - unique
+      - not_null
+    - name: modifieddate
+      description: Data da última modificação
+  - name: sales_order_header
+    description: Tabela Header do Pedido
+    columns:
+    - name: salesorderid
+      description: Primary key
+      tests:
+      - unique
+      - not_null
+    - name: revisionnumber
+      description: Incremental number to track changes to the sales order over time.
+    - name: orderdate
+      description: Dates the sales order was created.
+    - name: duedate
+      description: Date the order is due to the customer.
+    - name: shipdate
+      description: Date the order was shipped to the customer.
+    - name: status
+      description: Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
+    - name: onlineorderflag
+      description: 0 = Order placed by sales person. 1 = Order placed online by customer.
+    - name: purchaseordernumber
+      description: Customer purchase order number reference.
+    - name: accountnumber
+      description: Financial accounting number reference.
+    - name: customerid
+      description: Customer identification number. Foreign key to Customer.BusinessEntityID.
+    - name: salespersonid
+      description: Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
+    - name: territoryid
+      description: Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
+    - name: billtoaddressid
+      description: Customer billing address. Foreign key to Address.AddressID.
+    - name: shiptoaddressid
+      description: Customer shipping address. Foreign key to Address.AddressID.
+    - name: shipmethodid
+      description: Shipping method. Foreign key to ShipMethod.ShipMethodID.
+    - name: creditcardid
+      description: Credit card identification number. Foreign key to CreditCard.CreditCardID.
+    - name: creditcardapprovalcode
+      description: Approval code provided by the credit card company.
+    - name: currencyrateid
+      description: Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
+    - name: subtotal
+      description: Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
+    - name: taxamt
+      description: Tax amount.
+    - name: freight
+      description: Shipping cost.
+    - name: totaldue
+      description: Total due from customer. Computed as Subtotal + TaxAmt + Freight
+    - name: comment
+      description: Sales representative comments
+    - name: rowguid
+      description: Id da linha
+      tests:
+      - unique
+      - not_null
+    - name: modifieddate
+      description: Data da última modificação
+  - name: sales_reason
+    description: Tabela de Pedidos
+    columns:
+    - name: salesorderid
+      description: Primary key
+      tests:
+      - unique
+      - not_null
+    - name: name
+      description: Razão da venda
+    - name: reasontype
+      description: Tipo da razão da venda
+    - name: modifieddate
+      description: Data da última modificação

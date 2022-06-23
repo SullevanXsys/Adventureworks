@@ -1,16 +1,17 @@
-WITH stg_order_detail AS (
-    SELECT salesorderid
+with sales_order_detail as 
+(
+    select salesorderid
+        ,productid
+        ,rowguid
+        ,specialofferid
         ,salesorderdetailid
         ,carriertrackingnumber
         ,orderqty
-        ,productid
-        ,specialofferid
         ,unitprice
         ,unitpricediscount
-        ,rowguid
         ,modifieddate
-    FROM {{ SOURCE('Adventureworks_EL', 'person_order_detail') }}
+    from Adventureworks_EL.sales_order_detail
 )
 
 select *
-from stg_order_detail
+from sales_order_detail

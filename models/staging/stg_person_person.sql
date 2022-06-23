@@ -1,5 +1,5 @@
-WITH stg_person_person AS (
-    SELECT businessentityid
+with stg_person_person as (
+    select businessentityid
         ,persontype
         ,namestyle
         ,title
@@ -12,7 +12,7 @@ WITH stg_person_person AS (
         ,demographics
         ,rowguid
         ,modifieddate
-    FROM {{ SOURCE('Adventureworks_EL', 'person_person') }}
+    from Adventureworks_EL.person_person
 )
 
 select *

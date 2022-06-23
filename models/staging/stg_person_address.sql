@@ -1,15 +1,16 @@
-WITH stg_person_address AS (
-    SELECT addressid
+with source_person_address as 
+(
+    select addressid
+        ,stateprovinceid
+        ,rowguid
         ,addressline1
         ,addressline2
         ,city
-        ,stateprovinceid
         ,postalcode
         ,spatiallocation
-        ,rowguid
         ,modifieddate
-    FROM {{ SOURCE('Adventureworks_EL', 'person_address') }}
+    from Adventureworks_EL.person_address
 )
 
 select *
-from stg_person_address
+from source_person_address

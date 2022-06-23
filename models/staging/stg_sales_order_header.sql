@@ -1,18 +1,19 @@
-WITH stg_sales_order_header AS (
-    SELECT salesorderid
+with source_sales_order_header as 
+(
+    select salesorderid
+        ,salespersonid
+        ,customerid
+        ,territoryid
         ,revisionnumber
         ,orderdate
         ,duedate
         ,shipdate
-        ,'status'
+        ,'status' AS order_status
         ,onlineorderflag
         ,purchaseordernumber
         ,accountnumber
-        ,customerid
-        ,salespersonid
-        ,territoryid
-    FROM {{ SOURCE('Adventureworks_EL', 'sales_order_header') }}
+    from Adventureworks_EL.sales_order_header
 )
 
 select *
-from stg_sales_order_header
+from source_sales_order_header
