@@ -8,7 +8,7 @@ with source_sales_order_header as
         ,orderdate
         ,duedate
         ,shipdate
-        ,'status' AS order_status
+        ,sales_order_header.status AS order_status
         ,onlineorderflag
         ,purchaseordernumber
         ,accountnumber
@@ -17,3 +17,4 @@ with source_sales_order_header as
 
 select *
 from source_sales_order_header
+

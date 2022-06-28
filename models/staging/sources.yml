@@ -199,3 +199,80 @@ sources:
       description: Tipo da razão da venda
     - name: modifieddate
       description: Data da última modificação
+  - name: sales_customer
+    description: Tabela de Clientes
+    columns:
+    - name: customerid
+      description: Primary key
+      tests:
+      - unique
+      - not_null
+    - name: personid
+      description: Id da pessoa
+    - name: storeid
+      description: Id do armazenamento
+    - name: territoryid
+      description: Id do território (?)
+    - name: rowguid
+      description: Id da linha
+      tests:
+      - unique
+      - not_null
+    - name: modifieddate
+      description: Data da última modificação
+    - name: production_product
+      columns:
+      - name: productid
+        description: Primary key
+        tests:
+        - unique
+        - not_null
+      - name: name
+      - name: productnumber
+      - name: makeflag
+      - name: finishedgoodsflag
+      - name: color
+      - name: safetystocklevel
+      - name: reorderpoint
+      - name: standardcost
+      - name: listprice
+      - name: size
+      - name: sizeunitmeasurecode
+      - name: weightunitmeasurecode
+      - name: weight
+      - name: daystomanufacture
+      - name: productline
+      - name: class
+      - name: style
+      - name: productsubcategoryid
+      - name: productmodelid
+      - name: sellstartdate
+      - name: sellenddate
+      - name: discontinueddate
+      - name: rowguid
+      - name: modifieddate
+    - name: person_state_province
+      columns:
+      - name: stateprovinceid
+        description: Primary key
+        tests:
+        - unique
+        - not_null
+      - name: stateprovincecode
+      - name: countryregioncode
+      - name: isonlystateprovinceflag
+      - name: name
+      - name: territoryid
+      - name: rowguid
+        description: Id da linha
+        tests:
+        - unique
+        - not_null
+      - name: modifieddate
+        description: Data da última modificação
+    - name: aw_sales_salesorder_header_sales_reason
+      columns:
+      - name: salesorderid
+      - name: salesreasonid
+      - name: modifieddate
+        description: Data da última modificação
