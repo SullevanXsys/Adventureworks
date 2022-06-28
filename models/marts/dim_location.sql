@@ -17,7 +17,9 @@ with
 
 , joining as (
     select
-         person_address.city
+        row_number() over (order by addressid) as locationsk
+        ,addressid as locationid
+        ,person_address.city
         ,person_address.addressline1
         ,person_address.addressline2
         ,person_address.postalcode

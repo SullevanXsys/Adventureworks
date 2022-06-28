@@ -11,7 +11,9 @@ with
 
 , joining as (
     select
-         person.firstname
+        row_number() over (order by customerid) as customersk
+        ,customerid
+        ,person.firstname
         ,person.middlename
         ,person.lastname
     from person

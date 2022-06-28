@@ -10,6 +10,8 @@ with products as (
 
 , joining as (
     select
+        row_number() over (order by productid) as productsk
+        ,productid
         sales.product.productid
         ,sales.salesorderdetail.salesorderid
         ,sales.salesorderdetail.salesorderdetailid

@@ -22,7 +22,10 @@ with
 
 , joining as (
     select
-         sales_order_header.status
+        row_number() over (order by salesorderid) as salesordersk
+        ,salesorderid
+        ,billtoaddressid
+        ,sales_order_header.status
         ,sales_reason.name
         ,sales_reason.reasontype
         ,sales_credit_card.cardtype
